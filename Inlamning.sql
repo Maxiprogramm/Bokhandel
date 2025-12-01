@@ -1,8 +1,11 @@
+-- Skriven av Maximilian Walder Lövgren YH25
+
+
 CREATE DATABASE Bokhandel;
 
 USE Bokhandel;
 
--- Skapa Böcker-tabellen
+-- Skapar Böcker-tabellen
 
 CREATE TABLE Bocker (
     ISBNID VARCHAR(20) PRIMARY KEY,
@@ -12,7 +15,7 @@ CREATE TABLE Bocker (
     Lagerstatus INT NOT NULL CHECK (Lagerstatus >= 0)
 );
 
--- Skapa Kunder-tabellen
+-- Skapar Kunder-tabellen
 CREATE TABLE Kunder (
     KundID INT AUTO_INCREMENT PRIMARY KEY,
     Namn VARCHAR(100) NOT NULL,
@@ -21,7 +24,7 @@ CREATE TABLE Kunder (
     Adress VARCHAR(255)
 );
 
--- Skapa Beställningar-tabellen
+-- Skapar Beställningar-tabellen
 CREATE TABLE Bestallningar (
     Ordernummer INT AUTO_INCREMENT PRIMARY KEY,
     KundID INT NOT NULL,
@@ -30,7 +33,7 @@ CREATE TABLE Bestallningar (
     FOREIGN KEY (KundID) REFERENCES Kunder(KundID) -- säkerställer att KundID alltid måste finnas i Kunder-tabellen.
 );
 
--- Skapa Orderrader-tabellen (kopplad till ISBNID) 
+-- Skapar Orderrader-tabellen (kopplad till ISBNID) 
 CREATE TABLE Orderrader (
     OrderradID INT AUTO_INCREMENT PRIMARY KEY,
     Ordernummer INT NOT NULL,
